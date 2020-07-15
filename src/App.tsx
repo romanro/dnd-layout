@@ -1,24 +1,24 @@
 import React from 'react';
 import { HashRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
-import { LayoutPage, WidgetsPage } from './pages';
+import { ConfigurationPage, LayoutsPage } from './pages';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">
         <nav>
           <Link to="/">Layout Page</Link>
-          <Link to="/widgets">Widgets Page</Link>
+          <Link to="/config/1">Widgets Page</Link>
         </nav>
 
         <Switch>
-          <Route exact path="/" component={LayoutPage} />
-          <Route exact path="/widgets" component={WidgetsPage} />
+          <Route exact path="/" component={LayoutsPage} />
+          <Route exact path="/config/:layoutId" component={ConfigurationPage} />
         </Switch>
       </div>
     </Router>
   );
-}
+};
 
 export default App;

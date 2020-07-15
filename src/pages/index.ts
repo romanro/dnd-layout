@@ -1,2 +1,2 @@
-export * from './WidgetsPage';
-export * from './LayoutPage';
+export * from './ConfigurationPage';
+export * from './LayoutsPage';
