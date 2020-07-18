@@ -15,13 +15,13 @@ export const LayoutsPage = () => {
     <div className="grid-container">
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} lg={4}>
-          {layouts.map((layout) => (
-            <Card className="grid-item">
+          {layouts.map((layout, index) => (
+            <Card key={index} className="grid-item">
               <CardHeader title={layout.name} />
               <CardContent>
-                <Layout layout={layout} />
+                <Layout layout={layout} isEditable={false} />
               </CardContent>
-              <CardActions disableSpacing>
+              <CardActions disableSpacing className="grid-actions">
                 <Link to={`/config/${layout.id}`}>
                   <Fab size="small" color="primary" aria-label="edit">
                     <EditIcon />

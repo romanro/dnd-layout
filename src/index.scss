@@ -20,7 +20,13 @@ code {
   padding: 1rem;
 
   .grid-item {
-    // padding: 0.05rem 0.2rem;
+    position: relative;
+
+    .grid-actions {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }
 
@@ -31,5 +37,35 @@ code {
     .react-grid-item {
       border: 1px solid $gray-300;
     }
+
+    &.editable {
+      .react-grid-item {
+        border: 1px dashed $purple;
+      }
+    }
+  }
+}
+
+.config-page {
+  .widgets-bar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.widget {
+  height: 3rem;
+  border: 3px solid transparent;
+
+  &.selectable {
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-500;
+    }
+  }
+
+  &.red {
+    background-color: $red;
   }
 }

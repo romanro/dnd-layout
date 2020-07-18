@@ -1,11 +1,19 @@
-import { EnumWidget } from './widgets.models';
+import { EnumWidgetType } from './widgets.models';
 
 export interface ILayout {
     id: string;
     name: string;
-    layout: Array<IGridLayoutPart>
+    elements: Array<IGridLayoutPart>
 }
 
+
+
 export interface IGridLayoutPart {
-    i: string; x: number; y: number; w: number; h: number; static: boolean, widget?: EnumWidget;
+    i: string; x: number; y: number; w: number; h: number; static: boolean, widget?: EnumWidgetType;
 }
+
+
+export type LayoutProps = {
+    layout: ILayout;
+    isEditable: boolean;
+};
