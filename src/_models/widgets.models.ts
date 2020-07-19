@@ -5,5 +5,12 @@ export enum EnumWidgetType {
 };
 
 export interface IWidgetProps {
-    isSelectable: boolean;
+    isDraggable: boolean;
+}
+export interface IWidgetPlaceholderProps {
+    currentWidget?: EnumWidgetType | undefined;
+}
+export interface IWidgetPlaceholderState {
+    draggingOver?: boolean;
+    currentWidget?: EnumWidgetType | undefined;
 }

@@ -8,7 +8,10 @@ const initialState: AppState = {
 
 const rootReducer = (state = initialState, action: any) => {
     if (action.type === LayoutActionsTypes.UpdateLayout) {
-        return state;
+        const index = state.layouts.findIndex(layout => layout.id === action.payload.id);
+        const updatedLayouts = [...state.layouts];
+        updatedLayouts[index] = { ...action.payload };
+        return { ...state, layouts: [...updatedLayouts] };
     }
     return state;
 };

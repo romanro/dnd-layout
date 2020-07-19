@@ -1,9 +1,10 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { ILayout } from '../_models';
+import { IGridLayoutPart, ILayout, IUpdateLayoutData } from '../_models';
+import { LayoutActionsTypes } from '../_store/actions/layout.actions';
 import { AppState } from '../_store/state/appState';
 import { WidgetRed } from '../widgets';
 import { Layout } from './../layouts/Layout';
@@ -15,17 +16,46 @@ export const ConfigurationPage = () => {
     state.layouts.find((layout) => layout.id === layoutId)
   );
 
+  const dispatchUpdateLayouts = useDispatch();
+
+  const updateLayout: any = (data: IUpdateLayoutData) => {
+    if (layout) {
+      const { placeholderId, widgetType } = data;
+      const updatedElements: Array<IGridLayoutPart> = layout.elements.map(
+        (element) => {
+          if (element.i === placeholderId) {
+            element.widget = widgetType;
+          }
+          return element;
+        }
+      );
+      const updatedLayout: ILayout = {
+        id: layout.id,
+        name: layout.name,
+        elements: [...updatedElements],
+      };
+      dispatchUpdateLayouts({
+        type: LayoutActionsTypes.UpdateLayout,
+        payload: updatedLayout,
+      });
+    }
+  };
+
   if (layout) {
     return (
-      <div className="config-page">
+      <div className="config-page grid-container">
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4} lg={3} className="widgets-bar">
             <h2>Widgets:</h2>
-            <WidgetRed isSelectable={true} />
+            <WidgetRed isDraggable={true} />
           </Grid>
           <Grid item xs={12} sm={8} lg={9}>
             <h2>{layout.name}</h2>
-            <Layout layout={layout} isEditable={true} />
+            <Layout
+              layout={layout}
+              isEditable={true}
+              updateLayout={updateLayout}
+            />
           </Grid>
         </Grid>
       </div>

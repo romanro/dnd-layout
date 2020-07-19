@@ -4,9 +4,9 @@ export enum LayoutActionsTypes {
     UpdateLayout = 'UPDATE_LAYOUT',
 };
 
-export const updateLayout = (layout: ILayout) => {
+export const updateLayout = (payload: ILayout) => {
     return {
         type: LayoutActionsTypes.UpdateLayout,
-        payload: layout
+        payload
     }
 }
