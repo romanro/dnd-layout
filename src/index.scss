@@ -12,9 +12,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  background: $gray-200;
 }
 
 .grid-container {
@@ -22,6 +21,10 @@ code {
 
   .grid-item {
     position: relative;
+
+    .card-header {
+      padding-bottom: 0;
+    }
 
     .grid-actions {
       position: absolute;
@@ -36,7 +39,8 @@ code {
 
   .react-grid-layout {
     .react-grid-item {
-      border: 1px solid $gray-300;
+      border: 1px solid $gray-400;
+      background-color: $gray-100;
 
       .widget-placeholder {
         position: absolute;
@@ -77,6 +81,12 @@ code {
     .widget-draggable-container {
       margin-bottom: 1rem;
     }
+  }
+
+  .layout-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
   }
 }
 

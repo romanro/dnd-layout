@@ -30,7 +30,7 @@ export const LayoutsPage = () => {
         {layouts.map((layout, index) => (
           <Grid key={index} item xs={12} sm={6} lg={4}>
             <Card className="grid-item">
-              <CardHeader title={layout.name} />
+              <CardHeader className="card-header" title={layout.name} />
               <CardContent>
                 <Layout layout={layout} isEditable={false} />
               </CardContent>
