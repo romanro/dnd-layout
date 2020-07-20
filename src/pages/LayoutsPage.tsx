@@ -5,11 +5,13 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { ILayout } from '../_models';
-import { AppState } from '../_store/state/appState';
+import { AppState } from '../_store/state/app.state';
 import { Layout } from '../layouts/Layout';
 
 export const LayoutsPage = () => {
-  const layouts: ILayout[] = useSelector((state: AppState) => state.layouts);
+  const layouts: ILayout[] = useSelector((state: AppState) => {
+    return state.layouts;
+  });
 
   return (
     <div className="grid-container">

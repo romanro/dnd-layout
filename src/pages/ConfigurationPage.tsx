@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import { IGridLayoutPart, ILayout, IUpdateLayoutData } from '../_models';
 import { LayoutActionsTypes } from '../_store/actions/layout.actions';
-import { AppState } from '../_store/state/appState';
+import { AppState } from '../_store/state/app.state';
 import { WidgetRed } from '../widgets';
 import { Layout } from './../layouts/Layout';
 

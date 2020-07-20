@@ -8,7 +8,6 @@ export class WidgetRed extends Component<IWidgetProps, any>
 
   onStartDrag = (event: any, id: EnumWidgetType) => {
     if (this.props.isDraggable) {
-      // console.log('widget start drag', id);
       event.dataTransfer.setData('widgetType', id); // If will not work in IE... can be changed to event.dataTransfer.setData(“text/plain”,id)
     }
   };
