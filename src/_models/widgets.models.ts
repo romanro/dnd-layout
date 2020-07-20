@@ -14,3 +14,7 @@ export interface IWidgetPlaceholderState {
     draggingOver?: boolean;
     currentWidget?: EnumWidgetType | undefined;
 }
+
+export interface IWidgetComponent {
+    widgetType: EnumWidgetType;
+}

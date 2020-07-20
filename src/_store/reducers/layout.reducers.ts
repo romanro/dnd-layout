@@ -6,6 +6,8 @@ const initialState: AppState = {
     layouts: MOCK_LAYOUTS
 };
 
+// for now using layout reducer as rootReducer
+
 const rootReducer = (state = initialState, action: any) => {
     if (action.type === LayoutActionsTypes.UpdateLayout) {
         const index = state.layouts.findIndex(layout => layout.id === action.payload.id);

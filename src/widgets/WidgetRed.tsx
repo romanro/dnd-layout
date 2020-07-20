@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { EnumWidgetType, IWidgetProps } from '../_models';
+import { EnumWidgetType, IWidgetComponent, IWidgetProps } from '../_models';
 
-export class WidgetRed extends Component<IWidgetProps, any> {
+export class WidgetRed extends Component<IWidgetProps, any>
+  implements IWidgetComponent {
   widgetType: EnumWidgetType = EnumWidgetType.RED; // hardcoded for now
 
   onStartDrag = (event: any, id: EnumWidgetType) => {
@@ -15,13 +16,15 @@ export class WidgetRed extends Component<IWidgetProps, any> {
   render() {
     return (
       <div
-        className={`widget red ${this.props.isDraggable ? 'selectable' : ''}`}
+        className={`widget ${this.props.isDraggable ? 'selectable' : ''} ${
+          this.widgetType
+        }`}
         draggable={this.props.isDraggable}
         onDragStart={(event) => {
           this.onStartDrag(event, this.widgetType);
         }}
       >
-        <h3>Red Widget</h3>
+        <h3>{this.widgetType} Widget</h3>
       </div>
     );
   }

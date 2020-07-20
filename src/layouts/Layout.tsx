@@ -35,7 +35,7 @@ export class Layout extends Component<ILayoutProps, any> {
   }
 
   render() {
-    const { width } = this.state;
+    const { width } = this.state; // calculated width based on parent width
 
     return (
       <div className="layout-wrapper" ref={(el) => (this.container = el)}>
