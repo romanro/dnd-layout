@@ -13,10 +13,19 @@ export class Layout extends Component<ILayoutProps, any> {
   };
 
   componentDidMount() {
+    this.updateContainerWidth();
+    window.addEventListener('resize', this.updateContainerWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateContainerWidth);
+  }
+
+  updateContainerWidth = () => {
     this.setState({
       width: this.container.offsetWidth,
     });
-  }
+  };
 
   onDragOver(event: any) {
     this.setState({ draggingOver: true });

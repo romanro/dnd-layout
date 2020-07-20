@@ -16,8 +16,8 @@ export const LayoutsPage = () => {
   return (
     <div className="grid-container">
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} lg={4}>
-          {layouts.map((layout, index) => (
+        {layouts.map((layout, index) => (
+          <Grid item xs={12} sm={6} lg={4}>
             <Card key={index} className="grid-item">
               <CardHeader title={layout.name} />
               <CardContent>
@@ -31,8 +31,8 @@ export const LayoutsPage = () => {
                 </Link>
               </CardActions>
             </Card>
-          ))}
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
     </div>
   );
