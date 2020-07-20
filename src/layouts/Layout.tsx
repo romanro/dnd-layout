@@ -9,6 +9,7 @@ export class Layout extends Component<ILayoutProps, any> {
 
   state = {
     width: 500,
+    draggingOver: false,
   };
 
   componentDidMount() {
@@ -18,11 +19,19 @@ export class Layout extends Component<ILayoutProps, any> {
   }
 
   onDragOver(event: any) {
+    this.setState({ draggingOver: true });
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  onDragLeave(event: any) {
+    this.setState({ draggingOver: false });
     event.stopPropagation();
     event.preventDefault();
   }
 
   onDrop(event: any, placeholderId: string) {
+    this.setState({ draggingOver: false });
     if (this.props.isEditable) {
       const widgetType = event.dataTransfer.getData('widgetType'); // If will not work in IE... can be changed to event.dataTransfer.getData("text")
 
@@ -40,7 +49,9 @@ export class Layout extends Component<ILayoutProps, any> {
     return (
       <div className="layout-wrapper" ref={(el) => (this.container = el)}>
         <GridLayout
-          className={`layout ${this.props.isEditable ? 'editable' : ''}`}
+          className={`layout ${this.props.isEditable ? 'editable' : ''} ${
+            this.state.draggingOver ? 'selected-for-drop' : ''
+          }`}
           layout={this.props.layout.elements}
           cols={12}
           rowHeight={30}
@@ -49,6 +60,9 @@ export class Layout extends Component<ILayoutProps, any> {
           {this.props.layout.elements.map((element) => (
             <div
               key={element.i}
+              onDragLeave={(event) => {
+                this.onDragLeave(event);
+              }}
               onDragOver={(event) => {
                 this.onDragOver(event);
               }}

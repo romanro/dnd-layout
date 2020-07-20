@@ -2,6 +2,7 @@ export enum EnumWidgetType {
     RED = 'red',
     GREEN = 'green',
     BLUE = 'blue',
+    TRANSPARENT = 'transparent'
 };
 
 export interface IWidgetProps {
@@ -10,11 +11,7 @@ export interface IWidgetProps {
 export interface IWidgetPlaceholderProps {
     currentWidget?: EnumWidgetType | undefined;
 }
-export interface IWidgetPlaceholderState {
-    draggingOver?: boolean;
-    currentWidget?: EnumWidgetType | undefined;
-}
 
-export interface IWidgetComponent {
-    widgetType: EnumWidgetType;
+export interface IWidgetDraggableContainerProps {
+    currentWidget: EnumWidgetType;
 }

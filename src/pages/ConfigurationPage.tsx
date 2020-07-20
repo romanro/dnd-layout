@@ -3,10 +3,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { IGridLayoutPart, ILayout, IUpdateLayoutData } from '../_models';
+import { EnumWidgetType, IGridLayoutPart, ILayout, IUpdateLayoutData } from '../_models';
 import { LayoutActionsTypes } from '../_store/actions/layout.actions';
 import { AppState } from '../_store/state/app.state';
-import { WidgetRed } from '../widgets';
+import { WidgetDraggableContainer, WidgetRed } from '../widgets';
 import { Layout } from './../layouts/Layout';
 
 export const ConfigurationPage = () => {
@@ -47,7 +47,12 @@ export const ConfigurationPage = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4} lg={3} className="widgets-bar">
             <h2>Widgets:</h2>
-            <WidgetRed isDraggable={true} />
+            <WidgetDraggableContainer currentWidget={EnumWidgetType.RED} />
+            <WidgetDraggableContainer currentWidget={EnumWidgetType.BLUE} />
+            <WidgetDraggableContainer currentWidget={EnumWidgetType.GREEN} />
+            <WidgetDraggableContainer
+              currentWidget={EnumWidgetType.TRANSPARENT}
+            />
           </Grid>
           <Grid item xs={12} sm={8} lg={9}>
             <h2>{layout.name}</h2>

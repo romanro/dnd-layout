@@ -1,6 +1,7 @@
 @import '../node_modules/react-grid-layout/css/styles.css';
 @import '../node_modules/react-resizable/css/styles.css';
 @import './styles/variables';
+@import './styles/widgets';
 
 body {
   margin: 0;
@@ -47,14 +48,23 @@ code {
           height: 100%;
           border: none;
         }
+
       }
     }
 
     &.editable {
       .react-grid-item {
-        border: 1px dashed $purple;
+        border: 1px dashed $indigo;
         background-color: $gray-200;
       }
+
+      &.selected-for-drop {
+        .react-grid-item {
+          border: 1px solid $indigo;
+          background-color: $gray-400;
+        }
+      }
+
     }
   }
 }
@@ -63,31 +73,20 @@ code {
   .widgets-bar {
     padding-left: 2rem;
     padding-right: 2rem;
+
+    .widget-draggable-container {
+      margin-bottom: 1rem;
+    }
   }
 }
 
-.widget {
+.widget-draggable-container {
+  cursor: pointer;
   height: 3rem;
-  border: 3px solid transparent;
-  display: flex;
 
-  h3 {
-    display: block;
-    color: white;
-    margin: auto;
-    text-align: center;
-    text-transform: capitalize;
-  }
-
-  &.selectable {
-    cursor: pointer;
-
-    &:hover {
-      border-color: $gray-500;
-    }
-  }
-
-  &.red {
-    background-color: $red;
+  &:hover {
+    -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
   }
 }
